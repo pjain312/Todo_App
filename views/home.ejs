@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>todo</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aclonica">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fredericka+the+Great">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat+Alternates">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Red+Hat+Display">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/css/Contact-Form-Clean.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <title>
+        <%= locals.title%>
+    </title>
+</head>
+
+<body>
+
+    <!-- main heading of the app -->
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="Heading">
+                        <h1 class="km1">Multipurpose TODO App</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+
+        <!-- Description of the task .. heading and the inpuut both -->
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="desc">
+                            <h5 class="fontsbypj">Description</h5>  <div class="row margin">
+                                <form class="col s12" method="POST" action="/create-task">
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input id="textarea1" name="itemname" class="materialize-textarea" placeholder="What's your task">
+                                        </div>
+                                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Type of the task heading and select -->
+    
+    <div class="desc">
+        <h5 class="fontsbypj">Choose the Category</h5>
+        <div class="paddeddiv">
+            <div class="form-group">
+                <select  class="form-control drop" name = "type" >
+                    <option style="color: black;">Personal</option>
+                    <option style="color: black;">School</option>
+                    <option style="color: black;">Work</option>
+                    <option style="color: black;">Other</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+<!-- date of task heading and input-->
+
+    <div class="dateset">
+        <h5 class=" fontsbypj">Due Date</h5>
+            <input type="date" name="date">
+    </div>
+        <hr>
+        <div class="buttons"><button class="btn btn-primary button1" type="submit"><i class="fa fa-plus"></i>&nbsp; &nbsp;ADD TASK</button>
+        </div>
+    </div>
+                
+    </form>
+
+    <!-- dynamic addition of tasks and their placement -->
+    
+    <div class="row">
+        <div class="col">
+            <ul>
+                <% for (let i of todo){ %>
+                <li>
+                    <div class="tasks"><span class="item"><%= i.itemname %></span>  <span class="type1"> <%= i.type %> </span>
+                        <p><i class="fa fa-calendar ico"></i><%= i.date %></p>
+                            <span class="delete-button">
+                                <a href="/delete-task/?id=<%= i.id %>">
+                                    <i class="fas fa-times"></i>
+                                </a>
+                            </span>
+                    </div>
+                </li>
+                <%}%>
+            </ul>
+        </div>
+    </div>
+ 
+    
+    <script src="/js/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/js/Material-Inputs.js"></script>
+
+</body>
+</html>
